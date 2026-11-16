@@ -1,0 +1,27 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Dependencias y builds
+node_modules/
+dist/
+build/
+
+# Temporales de Office
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# Registros
+*.log
+
+# Grabaciones crudas de sesiones (pueden contener datos personales; no subir)
+grabaciones/
+*.mp4
+*.mov

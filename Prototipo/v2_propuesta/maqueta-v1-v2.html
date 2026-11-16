@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutoría Fácil UTA · Maqueta v1 → v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--font:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--ink:#0f1b2d;--muted:#5b6b80;--brand:#0b4fb3;--brand-2:#0a2a5e;--line:#dde3ec}
+*{box-sizing:border-box} body{margin:0;font-family:var(--font);background:#f8f6f1;color:var(--ink)}
+.wrap{max-width:980px;margin:0 auto;padding:24px 16px;display:flex;gap:28px;flex-wrap:wrap}
+h1{font-size:26px;margin:0 0 4px;color:var(--brand-2)} p,li{font-size:15.5px;line-height:1.5;color:#2a3a52}
+.chip{border:1px solid #c5cfdd;background:#fff;border-radius:999px;padding:6px 12px;font:700 13px var(--font);cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.chip:focus-visible,button:focus-visible{outline:3px solid #e09a10;outline-offset:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+table{border-collapse:collapse;width:100%;font-size:14px} th,td{text-align:left;padding:6px 8px;border-top:1px solid var(--line)} th{background:var(--brand-2);color:#fff}
+.side{flex:1;min-width:280px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <div style="display:flex;gap:6px;margin-bottom:10px"><button class="chip on" data-ver="1">v1 · actual</button><button class="chip" data-ver="2">v2 · propuesta</button><button class="chip" id="dmReset">↺ Reiniciar</button></div>
+    <div id="phone" style="width:330px;height:560px;border:8px solid #1a2334;border-radius:28px;background:#f4f6fa;overflow:hidden;position:relative;font-size:13px"></div>
+  </div>
+  <div class="side">
+    <h1>Tutoría Fácil UTA · v1 → v2</h1>
+    <p>Maqueta comparativa del APE 6 (G5) para el flujo de reserva. El prototipo v2 completo, con las 9 mejoras del backlog, está en <a href="prototipo-v2.html">prototipo-v2.html</a>.</p>
+    <div class="card"><b>Prueba esto</b><ol><li>Toca un horario «Ocupado».</li><li>Elige 10:00 y «Virtual» → Continuar.</li><li>En el Resumen, toca «Cambiar horario».</li><li>Repite en v2 y compara.</li></ol></div>
+    <table><tr><th>Cambio en v2</th><th>Hallazgo</th><th>Backlog</th></tr>
+      <tr><td>Se conservan hora y modalidad al volver, con aviso</td><td>H2</td><td>B1</td></tr>
+      <tr><td>Selector de día</td><td>H4</td><td>B4</td></tr>
+      <tr><td>Mensaje al tocar «Ocupado» con la siguiente hora libre; mejor contraste</td><td>H6</td><td>B5</td></tr>
+      <tr><td>Campo opcional de tema</td><td>H7</td><td>B9</td></tr></table>
+  </div>
+</div>
+<script>
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+// ---------- v1 / v2 demo ----------
+  var ph = $('phone'); if(!ph) return;
+  var css = document.createElement('style');
+  css.textContent = '#phone .hd{background:#0b4fb3;color:#fff;padding:10px 14px}#phone .hd small{opacity:.85}#phone .hd h4{margin:4px 0 2px;font-size:17px}'+
+    '#phone .bd{padding:8px 12px;display:flex;flex-direction:column;gap:6px;height:calc(100% - 74px);overflow:auto}#phone .bd>*{flex-shrink:0}'+
+    '#phone .cd{background:#fff;border:1px solid #e1e6ee;border-radius:12px;padding:8px 10px}'+
+    '#phone .lb{font-weight:700;font-size:12px;color:#2a3a52}'+
+    '#phone .tg{display:grid;grid-template-columns:1fr 1fr;gap:6px}#phone .tg button{border:1px solid #d5dce6;background:#fff;border-radius:10px;padding:7px;font:700 12.5px var(--font);cursor:pointer;color:#2a3a52}#phone .tg button.on{background:#0b4fb3;color:#fff;border-color:#0b4fb3}'+
+    '#phone .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}#phone .sl{border:1px solid #d5dce6;background:#fff;border-radius:10px;padding:4px 2px;text-align:center;cursor:pointer;font:800 13px var(--font);color:#0f1b2d}#phone .sl span{display:block;font:500 10.5px var(--font);color:#5b6b80}'+
+    '#phone .sl.on{background:#0b4fb3;color:#fff;border-color:#0b4fb3}#phone .sl.on span{color:#d6e3ff}'+
+    '#phone .sl.oc1{background:#f3f5f8;color:#c3c9d3;border-color:#eef1f5;cursor:default}#phone .sl.oc1 span{color:#cdd3dc}'+
+    '#phone .sl.oc2{background:repeating-linear-gradient(135deg,#eef1f5 0 6px,#e3e8ef 6px 12px);color:#4a5566;border-color:#cfd6e0}#phone .sl.oc2 span{color:#4a5566;font-weight:700}'+
+    '#phone .go{border:0;border-radius:12px;padding:10px;font:800 13.5px var(--font);background:#0b4fb3;color:#fff;cursor:pointer;width:100%}#phone .go:disabled{background:#dfe4ec;color:#8a96a8;cursor:not-allowed}#phone .go.gr2{background:#1d7f46}#phone .go.out{background:#fff;color:#0f1b2d;border:1px solid #cfd6e0}'+
+    '#phone .days{display:flex;gap:5px;overflow:auto}#phone .days button{flex:none;border:1px solid #d5dce6;background:#fff;border-radius:999px;padding:5px 9px;font:700 11.5px var(--font);cursor:pointer}#phone .days button.on{background:#0a2a5e;color:#fff;border-color:#0a2a5e}'+
+    '#phone .bn{background:#e3f5ea;color:#0f4a28;border-radius:10px;padding:7px 9px;font-weight:700;font-size:12px}'+
+    '#phone .toast{position:absolute;left:10px;right:10px;bottom:12px;background:#0f1b2d;color:#fff;border-radius:12px;padding:9px 11px;font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.3)}#phone .toast button{margin-top:6px;background:#ffc857;border:0;border-radius:8px;padding:4px 9px;font:800 12px var(--font);cursor:pointer}'+
+    '#phone .kv{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #eef1f5}#phone .kv:last-child{border:0}#phone .kv span{color:#5b6b80}#phone textarea{width:100%;border:1px solid #cfd6e0;border-radius:8px;font:13px var(--font);padding:6px;resize:none;height:46px}';
+  document.head.appendChild(css);
+
+  var SL = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
+  var DAYS = [{c:'Jue 8',l:'Jueves, 8 de octubre de 2026',o:['09:00','13:00','16:00']},{c:'Vie 9',l:'Viernes, 9 de octubre de 2026',o:['08:00','12:00','15:00']},{c:'Lun 12',l:'Lunes, 12 de octubre de 2026',o:['10:00','14:00']},{c:'Mar 13',l:'Martes, 13 de octubre de 2026',o:['09:00','11:00','17:00']},{c:'Mié 14',l:'Miércoles, 14 de octubre de 2026',o:['13:00','16:00']}];
+  var S;
+  function reset(){ S = {view:'h', day:0, mod:'P', slot:null, back:false, toast:null, tema:''}; }
+  var ver = 1; reset();
+  function nextFree(from){ var occ=DAYS[S.day].o, i=SL.indexOf(from); for(var k=i+1;k<SL.length;k++) if(occ.indexOf(SL[k])<0) return SL[k]; return null; }
+  function draw(){
+    var d = DAYS[ver===1?0:S.day], h='';
+    if(S.view==='h'){
+      h += '<div class="hd"><small>← Programación</small><h4>Seleccionar horario</h4><small>'+d.l+'</small></div><div class="bd">';
+      h += '<div class="cd" style="padding:6px 10px"><b>Msc. Andrea Paola Mendoza</b> <span style="color:#5b6b80">· Programación</span></div>';
+      if(ver===2){ h += '<div class="days" aria-label="Día">'; DAYS.forEach(function(x,i){ h += '<button data-day="'+i+'" class="'+(i===S.day?'on':'')+'">'+x.c+'</button>'; }); h += '</div>'; }
+      if(ver===2 && S.back && S.slot) h += '<div class="bn">✔ Conservamos tu selección: '+S.slot+' · '+(S.mod==='V'?'Virtual':'Presencial')+'</div>';
+      h += '<div class="lb">Modalidad</div><div class="tg"><button data-mod="P" class="'+(S.mod==='P'?'on':'')+'">🏫 Presencial</button><button data-mod="V" class="'+(S.mod==='V'?'on':'')+'">💻 Virtual</button></div>';
+      h += '<div class="gr">';
+      SL.forEach(function(s){ var oc = d.o.indexOf(s)>=0, on = S.slot===s; h += '<button class="sl '+(oc?('oc'+ver):'')+(on?' on':'')+'" data-slot="'+s+'"'+(oc&&ver===1?' aria-disabled="true"':'')+'>'+s+'<span>'+(oc?'Ocupado':(on?'Seleccionado':'Disponible'))+'</span></button>'; });
+      h += '</div><button class="go" data-go="1"'+(S.slot?'':' disabled')+'>'+(S.slot?'Continuar con '+S.slot:'Selecciona un horario')+'</button></div>';
+    } else if(S.view==='r'){
+      h += '<div class="hd"><small>← Horarios</small><h4>Resumen de tutoría</h4><small>Revisa los detalles antes de confirmar</small></div><div class="bd">';
+      h += '<div class="cd"><div class="kv"><span>Docente</span><b>Msc. A. P. Mendoza</b></div><div class="kv"><span>Asignatura</span><b>Programación</b></div><div class="kv"><span>Fecha</span><b>'+d.l.split(',')[0]+' '+d.c.split(' ')[1]+'</b></div><div class="kv"><span>Hora</span><b>'+S.slot+'</b></div><div class="kv"><span>Modalidad</span><b>'+(S.mod==='V'?'Virtual':'Presencial')+'</b></div></div>';
+      if(ver===2) h += '<div class="lb">¿Qué quieres revisar? (opcional)</div><textarea id="dmTema" maxlength="140" placeholder="Ej.: recursividad, ejercicio 3 del taller">'+esc(S.tema)+'</textarea>';
+      h += '<button class="go gr2" data-ok="1">Confirmar tutoría</button><button class="go out" data-chg="1">Cambiar horario</button></div>';
+    } else {
+      h += '<div class="hd"><small>Tutoría Fácil</small><h4>Tutoría confirmada</h4><small>Simulación de la maqueta</small></div><div class="bd"><div class="bn" style="font-size:14px">✔ '+S.slot+' · '+(S.mod==='V'?'Virtual':'Presencial')+' · '+d.c+'</div>'+(ver===2&&S.tema?'<div class="cd"><span style="color:#5b6b80">Tema:</span> '+esc(S.tema)+'</div>':'')+'<button class="go out" data-again="1">Volver a empezar</button></div>';
+    }
+    if(S.toast) h += '<div class="toast" role="status">'+S.toast.t+(S.toast.s?'<br><button data-pick="'+S.toast.s+'">Elegir '+S.toast.s+'</button>':'')+'</div>';
+    ph.innerHTML = h;
+  }
+  ph.addEventListener('input', function(e){ if(e.target.id==='dmTema') S.tema = e.target.value; });
+  ph.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    S.toast = null;
+    if(b.dataset.day){ S.day=+b.dataset.day; S.slot=null; S.back=false; }
+    else if(b.dataset.mod){ S.mod=b.dataset.mod; }
+    else if(b.dataset.slot){
+      var occ = DAYS[ver===1?0:S.day].o.indexOf(b.dataset.slot)>=0;
+      if(occ){ if(ver===2){ var nf=nextFree(b.dataset.slot); S.toast={t:b.dataset.slot+' está ocupado con este docente.'+(nf?' Siguiente hora libre: '+nf+'.':''), s:nf}; } }
+      else { S.slot=b.dataset.slot; S.back=false; }
+    }
+    else if(b.dataset.pick){ S.slot=b.dataset.pick; S.back=false; }
+    else if(b.dataset.go){ S.view='r'; }
+    else if(b.dataset.chg){ S.view='h'; if(ver===1){ S.slot=null; S.mod='P'; S.back=false; } else { S.back=true; } }
+    else if(b.dataset.ok){ S.view='ok'; }
+    else if(b.dataset.again){ reset(); }
+    draw();
+  });
+  document.querySelectorAll('[data-ver]').forEach(function(b){ b.onclick=function(){ ver=+b.dataset.ver; document.querySelectorAll('[data-ver]').forEach(function(x){x.classList.toggle('on',x===b);}); reset(); draw(); }; });
+  $('dmReset').onclick = function(){ reset(); draw(); };
+  draw();
+})();
+</script>
+</body>
+</html>
