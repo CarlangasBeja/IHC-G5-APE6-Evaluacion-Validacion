@@ -12,17 +12,6 @@ Interacción Humano–Computador · 5.º nivel · Paralelo B · Unidad Evaluativ
 | Para los grupos | 8 actividades de 3 min dentro de la exposición, ronda de preguntas en modo juego y taller general en Word (1 h) |
 | Evidencias | [Prototipo/Evaluacion_APE6/EVIDENCIAS.md](Prototipo/Evaluacion_APE6/EVIDENCIAS.md) |
 
-## Equipo
-
-| Integrante | Cuenta GitHub | Rol en la evaluación | Issue asignada | Rama |
-| --- | --- | --- | --- | --- |
-| _(completar)_ | @ArteMisa82 | Facilitador | #1 Plan, objetivos y participantes | `feat/plan` |
-| _(completar)_ | _(completar)_ | Observador | #2 Ética y consentimiento | `feat/etica` |
-| _(completar)_ | _(completar)_ | Cronometrista | #3 Tareas y métricas | `feat/tareas` |
-| _(completar)_ | _(completar)_ | Registrador técnico | #4 Hoja de observación y piloto | `feat/piloto` |
-| _(todo el equipo)_ | | | #5 Métodos y matriz de hallazgos · #6 Backlog y versión 2 | `feat/metodos` · `feat/backlog` |
-
-> Los roles rotan entre participantes para que cada integrante tenga evidencia individual.
 
 ## Responsabilidad según la matriz (5B · G5)
 
@@ -87,8 +76,6 @@ Interacción Humano–Computador · 5.º nivel · Paralelo B · Unidad Evaluativ
 | Matriz de hallazgos | [matriz-hallazgos.md](Prototipo/Evaluacion_APE6/Fase4_Analisis/matriz-hallazgos.md) |
 | Backlog priorizado | [backlog.md](Prototipo/Evaluacion_APE6/Fase4_Analisis/backlog.md) |
 | Prototipo v2 | [prototipo-v2.html](Prototipo/v2_propuesta/prototipo-v2.html) |
-| Issues | `https://github.com/<usuario>/<repositorio>/issues` _(completar)_ |
-| Pull requests | `https://github.com/<usuario>/<repositorio>/pulls` _(completar)_ |
 
 ## Reglas de trabajo
 
